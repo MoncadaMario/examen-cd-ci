@@ -3,11 +3,12 @@ name: CD - deploy on tag
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,7 +22,7 @@ jobs:
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
           if [ -z "$RENDER_API_KEY" ] || [ -z "$RENDER_SERVICE_ID" ]; then
-            echo "Missing Render secrets"; exit 1;
+            echo "Missing Render secrets"; exit 1
           fi
 
           echo "Triggering deploy on Render for service $RENDER_SERVICE_ID..."
