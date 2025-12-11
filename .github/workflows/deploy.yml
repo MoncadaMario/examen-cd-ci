@@ -3,7 +3,7 @@ name: CD - deploy on tag
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   deploy:
@@ -20,6 +20,7 @@ jobs:
         run: echo "Tag: $GITHUB_REF"
 
       - name: Trigger Render deploy via API
+        shell: bash
         run: |
           if [ -z "$RENDER_API_KEY" ] || [ -z "$RENDER_SERVICE_ID" ]; then
             echo "Missing Render secrets"; exit 1
